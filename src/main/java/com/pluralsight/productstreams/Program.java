@@ -91,7 +91,7 @@ public class Program {
 //        return count;
         // STEP B (stream): .filter(...), then .count()
         if (products == null || category == null) {
-            return Long.valueOf(0);
+            return 0L;
         }
         return products.stream()
                 .filter(product -> product != null && category.equalsIgnoreCase(product.getCategory()))
