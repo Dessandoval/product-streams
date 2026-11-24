@@ -86,7 +86,7 @@ public class Program {
         return count;
         // STEP B (stream): .filter(...), then .count()
 
-        return 0; // replace this line
+//        return 0; // replace this line
     }
 
     // TASK 4: a list of just the prices
