@@ -50,12 +50,8 @@ public class Program {
 //        }
 //        return productList;
         // STEP B (stream): products.stream(), then .filter(...), then .toList()
-        if (products == null || category == null ) {
-            return productList;
-        }
         return products.stream()
-                .filter(product -> product != null && category.equalsIgnoreCase(product.getCategory()))
-                .toList();
+                .filter(product -> product.getCategory().equalsIgnoreCase(category)).toList();
     }
 
     // TASK 2: the total of every product's price
@@ -90,12 +86,8 @@ public class Program {
 //        }
 //        return count;
         // STEP B (stream): .filter(...), then .count()
-        if (products == null || category == null) {
-            return 0L;
-        }
         return products.stream()
-                .filter(product -> product != null && category.equalsIgnoreCase(product.getCategory()))
-                .count();
+                .filter(product -> product.getCategory().equalsIgnoreCase(category)).count();
     }
 
     // TASK 4: a list of just the prices
