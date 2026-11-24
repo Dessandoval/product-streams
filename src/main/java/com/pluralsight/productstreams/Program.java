@@ -39,16 +39,16 @@ public class Program {
     private static List<Product> getProductsByCategory(List<Product> products, String category) {
         // STEP A (loop): make an empty list, loop through products, and add each one
         //   whose category matches (equalsIgnoreCase). Return the list.
-        List<Product> matches = new ArrayList<>();
+        List<Product> productList = new ArrayList<>();
         if (products == null || category == null) {
-            return matches;
+            return productList;
         }
         for (Product product : products) {
             if (product != null && category.equalsIgnoreCase(product.getCategory())) {
-                matches.add(product);
+                productList.add(product);
             }
         }
-        return matches;
+        return productList;
         // STEP B (stream): products.stream(), then .filter(...), then .toList()
 //        return new ArrayList<>(); // replace this line
     }
@@ -111,13 +111,14 @@ public class Program {
     // TASK 5: print each product
     private static void printProducts(List<Product> products) {
         // STEP A (loop): a for-each loop that prints each product
-        if (products == null) {
-            return;
-        }
-        for (Product product : products) {
-            System.out.println(product);
-        }
+//        if (products == null) {
+//            return;
+//        }
+//        for (Product product : products) {
+//            System.out.println(product);
+//        }
         // STEP B: products.forEach(...) with a lambda
+        products.forEach(product -> System.out.println(products));
 
     }
 
