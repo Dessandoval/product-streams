@@ -40,17 +40,22 @@ public class Program {
         // STEP A (loop): make an empty list, loop through products, and add each one
         //   whose category matches (equalsIgnoreCase). Return the list.
         List<Product> productList = new ArrayList<>();
-        if (products == null || category == null) {
+//        if (products == null || category == null) {
+//            return productList;
+//        }
+//        for (Product product : products) {
+//            if (product != null && category.equalsIgnoreCase(product.getCategory())) {
+//                productList.add(product);
+//            }
+//        }
+//        return productList;
+        // STEP B (stream): products.stream(), then .filter(...), then .toList()
+        if (products == null || category == null ) {
             return productList;
         }
-        for (Product product : products) {
-            if (product != null && category.equalsIgnoreCase(product.getCategory())) {
-                productList.add(product);
-            }
-        }
-        return productList;
-        // STEP B (stream): products.stream(), then .filter(...), then .toList()
-//        return new ArrayList<>(); // replace this line
+        return products.stream()
+                .filter(product -> product != null && category.equalsIgnoreCase(product.getCategory()))
+                .toList();
     }
 
     // TASK 2: the total of every product's price
@@ -75,18 +80,22 @@ public class Program {
     private static long countProductsInCategory(List<Product> products, String category) {
         // STEP A (loop): a count that starts at 0, plus 1 for each match
         long count = 0;
-        if (products == null || category == null) {
-            return count;
-        }
-        for (Product product : products) {
-            if (product != null && category.equalsIgnoreCase(product.getCategory())) {
-                count++;
-            }
-        }
-        return count;
+//        if (products == null || category == null) {
+//            return count;
+//        }
+//        for (Product product : products) {
+//            if (product != null && category.equalsIgnoreCase(product.getCategory())) {
+//                count++;
+//            }
+//        }
+//        return count;
         // STEP B (stream): .filter(...), then .count()
-
-//        return 0; // replace this line
+        if (products == null || category == null) {
+            return Long.valueOf(0);
+        }
+        return products.stream()
+                .filter(product -> product != null && category.equalsIgnoreCase(product.getCategory()))
+                .count();
     }
 
     // TASK 4: a list of just the prices
