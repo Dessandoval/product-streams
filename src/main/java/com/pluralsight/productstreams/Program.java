@@ -93,20 +93,20 @@ public class Program {
     // TASK 4: a list of just the prices
     private static List<BigDecimal> getPrices(List<Product> products) {
         // STEP A (loop): an empty List<BigDecimal>; add each product's price
-        List<BigDecimal> prices = new ArrayList<>();
-        if (products == null) {
-            return prices;
-        }
-        for (Product product : products) {
-            if (product != null) {
-                prices.add(product.getPrice());
-            }
-        }
-        return prices;
+//        List<BigDecimal> prices = new ArrayList<>();
+//        if (products == null) {
+//            return prices;
+//        }
+//        for (Product product : products) {
+//            if (product != null) {
+//                prices.add(product.getPrice());
+//            }
+//        }
+//        return prices;
 
         // STEP B (stream, after Wednesday's demo): .map(...) each product to its price,
         //   then .toList()
-//        return new ArrayList<>(); // replace this line
+        return products.stream().map(Product::getPrice).toList();
     }
 
     // TASK 5: print each product
