@@ -122,6 +122,22 @@ public class Program {
         products.forEach(product -> System.out.println(products));
 
     }
+    // TASK 6 (optional): the names of the products under a price
+    private static List<String> getNamesUnder(List<Product> products, BigDecimal limit) {
+        // STEP A (loop): an empty List<String>; add the name of each product whose price
+        //   is less than limit (compareTo)
+        // STEP B (stream): .filter(...), then .map(...) each product to its name, then .toList()
+
+        return new ArrayList<>(); // replace this line
+    }
+
+    // TASK 7 (optional): the products from cheapest to most expensive
+    private static List<Product> getProductsByPrice(List<Product> products) {
+        // No loop for this one: sorting with a loop is a lot of work.
+        // STEP B (stream): .sorted(Comparator.comparing(...)), then .toList()
+
+        return new ArrayList<>(); // replace this line
+    }
 
     private static List<Product> getInventory() {
         List<Product> products = new ArrayList<>();
