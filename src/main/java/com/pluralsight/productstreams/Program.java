@@ -3,6 +3,7 @@ package com.pluralsight.productstreams;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class Program {
@@ -33,6 +34,13 @@ public class Program {
             System.out.println("\nMost expensive: $" + Collections.max(prices));
             System.out.println("Cheapest: $" + Collections.min(prices));
         }
+        // 6 (optional). The names of the products under a price
+        BigDecimal limit = new BigDecimal("50.00");
+        System.out.println("\nUnder $" + limit + ": " + getNamesUnder(inventory, limit));
+
+        // 7 (optional). Cheapest to most expensive
+        System.out.println("\n--- Cheapest first ---");
+        printProducts(getProductsByPrice(getInventory()));
     }
 
     // TASK 1: the products in one category
@@ -147,8 +155,9 @@ public class Program {
     private static List<Product> getProductsByPrice(List<Product> products) {
         // No loop for this one: sorting with a loop is a lot of work.
         // STEP B (stream): .sorted(Comparator.comparing(...)), then .toList()
-
-        return new ArrayList<>(); // replace this line
+        return products.stream()
+                .sorted(Comparator.comparing(Product::getPrice))
+                .toList();
     }
 
     private static List<Product> getInventory() {
@@ -165,5 +174,4 @@ public class Program {
         return products;
 
     }
-
 }
