@@ -57,19 +57,21 @@ public class Program {
     // TASK 2: the total of every product's price
     private static BigDecimal getTotalInventoryValue(List<Product> products) {
         // STEP A (loop): start a total at BigDecimal.ZERO, and add each price with .add()
-        BigDecimal total = BigDecimal.ZERO;
-        if (products == null) {
-            return total;
-        }
-        for (Product product : products) {
-            if (product != null && product.getPrice() != null) {
-                total = total.add(product.getPrice());
-            }
-        }
-        return total;
+//        BigDecimal total = BigDecimal.ZERO;
+//        if (products == null) {
+//            return total;
+//        }
+//        for (Product product : products) {
+//            if (product != null && product.getPrice() != null) {
+//                total = total.add(product.getPrice());
+//            }
+//        }
+//        return total;
         // STEP B (stream, after Wednesday's demo): .map(...) each product to its price,
         //   then .reduce(BigDecimal.ZERO, ...) to add them up
-//        return BigDecimal.ZERO; // replace this line
+        return products.stream()
+                .map(Product::getPrice)
+                .reduce(BigDecimal.ZERO, BigDecimal::add);
     }
 
     // TASK 3: how many products are in one category
@@ -126,9 +128,19 @@ public class Program {
     private static List<String> getNamesUnder(List<Product> products, BigDecimal limit) {
         // STEP A (loop): an empty List<String>; add the name of each product whose price
         //   is less than limit (compareTo)
-        // STEP B (stream): .filter(...), then .map(...) each product to its name, then .toList()
+//        List<String> names = new ArrayList<>();
+//        for (Product product : products) {
+//            if (product.getPrice().compareTo(limit) < 0) {
+//                names.add(product.getName());
+//            }
+//        }
+//        return names;
 
-        return new ArrayList<>(); // replace this line
+        // STEP B (stream): .filter(...), then .map(...) each product to its name, then .toList()
+        return products.stream()
+                .filter(product -> product.getPrice().compareTo(limit) < 0)
+                .map(Product::getName)
+                .toList();
     }
 
     // TASK 7 (optional): the products from cheapest to most expensive
